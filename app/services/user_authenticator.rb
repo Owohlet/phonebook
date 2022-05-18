@@ -1,4 +1,3 @@
-require 'pry'
 class UserAuthenticator
 
 	attr_reader :params

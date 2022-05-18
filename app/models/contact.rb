@@ -1,4 +1,3 @@
-require 'pry'
 class Contact < ApplicationRecord
 	has_many :histories, dependent: :destroy
 	validates :email, presence: true, uniqueness: true

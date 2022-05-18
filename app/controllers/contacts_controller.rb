@@ -1,4 +1,3 @@
-require 'pry'
 class ContactsController < ApplicationController
 	before_action :authorize_request
 	

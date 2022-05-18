@@ -11,12 +11,12 @@ describe 'contact routes' do
 
 	it 'should route to contacts update' do
 		contact = create :contact
-		expect(put "/contacts/#{contact.id}").to route_to("contacts#update", id: "1")
+		expect(put "/contacts/#{contact.id}").to route_to("contacts#update", id: "#{contact.id}")
 	end
 
 	it 'should route to contacts delete' do
 		contact = create :contact
-		expect(delete "/contacts/#{contact.id}").to route_to("contacts#destroy", id: "1")
+		expect(delete "/contacts/#{contact.id}").to route_to("contacts#destroy", id: "#{contact.id}")
 	end
 
 end

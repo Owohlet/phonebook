@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	class PasswordError < StandardError; end
 	
 	before_action :authorize_request, except: :create
-	before_action :find_user, except: %i[create index]
+	# before_action :find_user, except: %i[create index]
 
   	# GET /users
   	def index
@@ -13,8 +13,9 @@ class UsersController < ApplicationController
 
   	# GET /users/{username}
   	def show
-  		render json: @user, status: :ok
-  	end
+
+      render json: @current_user, status: :ok
+    end
 
   	# POST /users
   	def create
@@ -31,15 +32,17 @@ class UsersController < ApplicationController
 
   	# PUT /users/{username}
   	def update
-  		unless @user.update(user_params)
-  			render json: { errors: @user.errors.full_messages },
-  			status: :unprocessable_entity
-  		end
-  	end
+
+      # @user = User.find_by_username(params[:_username])
+      unless @current_user.update(user_params)
+        render json: { errors: @current_user.errors.full_messages },
+        status: :unprocessable_entity
+      end
+    end
 
   	# DELETE /users/{username}
   	def destroy
-  		@user.destroy
+  		@current_user.destroy
   	end
 
   	private

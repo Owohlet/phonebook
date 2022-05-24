@@ -9,6 +9,11 @@ describe 'user routes' do
 		expect(post '/users').to route_to("users#create")
 	end
 
+	it 'should route to show a user' do
+		user = create :user
+		expect(get "/users/#{user.username}").to route_to("users#show", _username: "#{user.username}")
+	end
+
 end
 
 describe 'login routes' do

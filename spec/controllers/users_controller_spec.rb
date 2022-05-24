@@ -33,12 +33,37 @@ RSpec.describe UsersController, type: :controller do
 		end
 	end
 
-	describe "#update" do
-		it "should return 204 no content when updated" do
-			user = create :user
-			user.update(username: "new user")
+	context "given created user" do
+		before(:each) do
 
-			expect(response).to be_successful
+			@user = create :user
+			params = {email: @user.email, password: @user.password}
+			auth = UserAuthenticator.new(params).perform
+
+			token = auth[0]
+			
+			request.headers['Authorization'] = token
+		end
+
+		describe "#update" do
+			it "should return 204 no content when updated" do
+				# user = create :user
+				# pp @user
+				put :update, params: {id:@user.id, _username:@user.username, username: "new_user"}
+				# pp Contact.find(@user.id)
+				expect(response.status).to eq(204)
+				# expect{ Contact.find_by_username("new_user") }.to be_successful
+				expect(User.find_by_username("new_user").fullname).to eq("Shannon Stone")
+			end
+		end
+
+		describe "#show" do
+
+			it "should be able to get user" do
+
+				get :show, params: {_username: @user.username}
+				# expect(response).to
+			end
 		end
 	end
 end

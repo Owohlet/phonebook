@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-	before_action :authorize_request
+	before_action :authorize_request, except: %i[show index]
 	
 
 	def index

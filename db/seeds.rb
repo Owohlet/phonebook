@@ -9,3 +9,7 @@ User.create([
 	{fullname: "Naruto Uzumaki", email: "n.uzumaki@gmail.com", password: "1234567890", username: "thelasttail"},
 	{fullname: "Hinata Hyyuga", email: "h.hyyuga@gmail.com", password: "1234567890", username: "eyesforthedark"}
 ])
+
+Contact.create([
+	{first_name: "Hagoromo", last_name: "Otsutsuki", email:"h.otsutsuki@gmail.com", phone_number: "+23478938475"}
+])

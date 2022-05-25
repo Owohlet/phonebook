@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
 	
 
 	def index
-		@contacts = Contact.all
+		@contacts = Contact.all.newest_first
 		render json: @contacts, status: :ok
 	end
 

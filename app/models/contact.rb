@@ -8,7 +8,7 @@ class Contact < ApplicationRecord
 	validates :phone_number, presence: true
 
 
-
+	scope :newest_first, -> {order(created_at: :desc)}
 
 
 end

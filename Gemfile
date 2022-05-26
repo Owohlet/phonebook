@@ -22,6 +22,8 @@ gem 'jwt'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'bundler-audit'
+gem "brakeman"
+gem 'rubocop', require: false
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
